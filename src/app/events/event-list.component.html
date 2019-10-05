@@ -3,7 +3,11 @@
     <hr/>
 
     <div class="well hoverwell thumbnail">
-        <event-thumbail [event] = "event1"></event-thumbail>
+        <event-thumbail #thumbnail [event] = "event1"></event-thumbail>
         <!-- <event-thumbail [event] = "event1" (eventClick)="handleEventClickMe($event)"></event-thumbail> -->
+        <!-- <h3>{{thumbnail.someProperty}}</h3>
+        <button (click)="thumbnail.logFoo()">
+            click me
+        </button> -->
     </div>
 </div>
