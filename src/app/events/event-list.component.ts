@@ -85,4 +85,8 @@ export class EventListComponent{
             }
         ]
     }
+
+    handleEventClickMe(data){
+        console.log("received: ", data);
+    }
 }
