@@ -1,13 +1,10 @@
-<div class="well hoverwell thumbnail">
-    <navBar></navBar>
-</div>
 <div>
     <h1>Upcoming Angular Events</h1>
     <hr/>
 
     <div class="row">
         <div *ngFor="let event of events" class="col-md-5">
-            <event-thumbail class="well hoverwell thumbnail" [event] = "event"></event-thumbail>
+            <event-thumbail [event] = "event"></event-thumbail>
         </div>
         
         <!-- <event-thumbail [event] = "event1" (eventClick)="handleEventClickMe($event)"></event-thumbail> -->
