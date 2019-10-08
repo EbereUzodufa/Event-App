@@ -1,5 +1,5 @@
 <div class="well hoverwell thumbnail">
-    <h2>{{event.name}}</h2>
+    <h2 [class.even] = "event?.id % 2 === 0">{{event.name}}</h2>
     <div>Date: {{event.date}}</div>
     <div [ngSwitch]="event?.time">
         Time: {{event.time}}
