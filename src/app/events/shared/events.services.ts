@@ -7,6 +7,12 @@ export class EventService {
     getEvents(){
         return EVENTS;
     }
+
+    getEvent(id:number){
+        const event = EVENTS.find(event=> event.id === id);
+        console.log('the Event', event);
+        return event;
+    }
 }
 const EVENTS = [
 {
