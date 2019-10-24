@@ -5,9 +5,9 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     templateUrl: './event-thumbnail.component.html',
     styles:[
         `
-        .green { color: green !important}
+        .am8 { color: #5F9EA0 !important}
         .bold { font-weight: bold}
-        .even, .pink{ color: pink}
+        .even, .am9{ color: pink}
         .thumbnail{min-height: 210px;}
         .pad-left{margin-left: 15px}
         `
@@ -30,9 +30,9 @@ export class EventThumbnailComponent{
     getStartTimeClass(){
         //This function get's the approprate class based on Start time class
         if(this.event && this.event.time === '8:00 am'){
-            return ['green', 'bold'];
+            return ['am8', 'bold'];
         } else if(this.event && this.event.time === '9:00 am'){
-            return ['pink', 'bold'];
+            return ['am9', 'bold'];
         }
             
         return [];
