@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EventService } from './shared/events.services';
 import { ToastrService } from '../common/toastr.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare let toastr
 
@@ -18,7 +19,7 @@ export class EventListComponent implements OnInit{
     //Declare events as an array as any
     events: any;
     //Calling our service
-    constructor(private eventService: EventService, private toastr: ToastrService){
+    constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute){
 
     }
 
@@ -26,9 +27,11 @@ export class EventListComponent implements OnInit{
     ngOnInit(): void {
       //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
       //Add 'implements OnInit' to the class.
-      this.eventService.getEvents().subscribe(events=> {
-        this.events = events
-      });
+      // this.eventService.getEvents().subscribe(events=> {
+      //   this.events = events
+      // });
+
+      this.events = this.route.snapshot.data['events'];
     }
 
     //Creating an external service using toastr
