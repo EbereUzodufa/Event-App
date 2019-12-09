@@ -1,11 +1,17 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
 //Always call injectable. This is for services depending on other services. Calling it is safer just in case.
 
 @Injectable()
 export class EventService {
     getEvents(){
-        return EVENTS;
+        let subject = new Subject();
+        setTimeout(()=>{
+            subject.next(EVENTS);
+            subject.complete();
+        }, 2000);
+        return subject;
     }
 
     getEvent(id:number){
