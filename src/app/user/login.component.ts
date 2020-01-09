@@ -5,5 +5,10 @@ import { Component } from "@angular/core";
 })
 
 export class LoginComponent{
+    userName:any;
+    password:any;
 
+    login(formValues){
+        console.log(formValues);
+    }
 }
