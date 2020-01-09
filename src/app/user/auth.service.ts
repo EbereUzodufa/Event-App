@@ -12,4 +12,8 @@ export class AuthService{
             userName: userName
         }
     }
+
+    isAuthenticated(){
+        return !!this.currentUser;
+    }
 }
