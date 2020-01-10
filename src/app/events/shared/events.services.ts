@@ -20,6 +20,16 @@ export class EventService {
         console.log('the Event', event);
         return event;
     }
+
+    saveEvent(event){
+        console.log('inital', EVENTS)
+        event.id = 999;
+        event.sessions = [];
+        EVENTS.push(event);
+        console.log('event', event);
+        console.log('later', EVENTS)
+
+    }
 }
 const EVENTS:IEvent[] = [
 {
