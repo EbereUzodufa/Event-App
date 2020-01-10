@@ -1,0 +1,26 @@
+em {
+  float: right;
+  color: #E05C65;
+  padding-left: 10px;
+}
+
+.error input {
+  background-color: #e3c3c5;
+}
+
+.error ::-webkit-input-placeholder {
+  color: #999;
+}
+
+.error :-ms-input-placeholder {
+  color: #999;
+}
+
+.error ::-ms-input-placeholder {
+  color: #999;
+}
+
+.error ::placeholder {
+  color: #999;
+}
+/*# sourceMappingURL=profile.component.css.map */
