@@ -30,6 +30,11 @@ export class EventService {
         // console.log('later', EVENTS)
 
     }
+
+    updateEvent(event){
+      let i = EVENTS.findIndex(x=> x.id = event.id);
+      EVENTS[i] = event;  
+    }
 }
 const EVENTS:IEvent[] = [
 {
