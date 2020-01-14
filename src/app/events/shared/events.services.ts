@@ -26,8 +26,8 @@ export class EventService {
         event.id = 999;
         event.sessions = [];
         EVENTS.push(event);
-        console.log('event', event);
-        console.log('later', EVENTS)
+        // console.log('event', event);
+        // console.log('later', EVENTS)
 
     }
 }
