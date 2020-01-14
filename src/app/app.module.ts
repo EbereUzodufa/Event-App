@@ -17,7 +17,12 @@ import {
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { ToastrService } from './common/toastr.service';
+
+import { 
+  ToastrService, 
+  CollapsibleWellComponent 
+} from './common/index';
+
 import { Error404Component } from './errors/404.component';
 import { appRoute } from './routes';
 import { CommonModule } from '@angular/common';
@@ -40,7 +45,8 @@ import { AuthService } from './user/auth.service';
     CreateEventComponent,
     Error404Component, 
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent, 
+    CollapsibleWellComponent
   ],
   providers: [
     EventService,
