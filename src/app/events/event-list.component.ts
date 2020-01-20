@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { EventService } from './shared/events.services';
-import { ToastrService } from '../common/toastr.service';
+// import { ToastrService } from '../common/toastr.service';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent } from './shared';
 
@@ -20,7 +20,7 @@ export class EventListComponent implements OnInit{
     //Declare events as an array as any
     events: IEvent[];
     //Calling our service
-    constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute){
+    constructor(private eventService: EventService, private route:ActivatedRoute){
 
     }
 
@@ -36,7 +36,7 @@ export class EventListComponent implements OnInit{
     }
 
     //Creating an external service using toastr
-    handleThumbnailClick(eventName){
-      this.toastr.success(eventName);
-    }
+    // handleThumbnailClick(eventName){
+    //   this.toastr.success(eventName);
+    // }
 }
