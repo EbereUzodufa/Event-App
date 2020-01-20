@@ -21,13 +21,14 @@ import { NavBarComponent } from './nav/navbar.component';
 
 import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
-import { TOASTR_TOKEN} from "./common/toastr.service";
+// import { TOASTR_TOKEN} from "./common/toastr.service";
 
 import { Error404Component } from './errors/404.component';
 import { appRoute } from './routes';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './user/auth.service';
 import { Toastr } from './common/toaster.model';
+import { ToastrService } from './common';
 // import { window } from 'rxjs/operators';
 
 let toastr:Toastr = window['Toastr'];
@@ -55,13 +56,14 @@ let toastr:Toastr = window['Toastr'];
   ],
   providers: [
     EventService,
-    {
-      provide: TOASTR_TOKEN,
-      useValue: toastr
-    },
+    // {
+    //   provide: TOASTR_TOKEN,
+    //   useValue: toastr
+    // },
     EventRouteActivator,
     EventListResolver,
     AuthService,
+    ToastrService,
     {
       provide: 'canDeactivateCreateEvent', 
       useValue: checkDirtyState
