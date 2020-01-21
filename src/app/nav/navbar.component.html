@@ -45,7 +45,7 @@
 
 <!-- Add a leading slash (/) to start from the root for the link  -->
 
-<simple-modal elementId = "searchedSessions" title="Matching Sessions">
+<simple-modal closeOnBodyClick = "true" elementId = "searchedSessions" title="Matching Sessions">
   <div class="list-group">
   <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">{{session.name}}</a>
   </div>

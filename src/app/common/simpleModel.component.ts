@@ -13,9 +13,12 @@ declare var $: any;
 export class SimpleModalComponent{
     @Input() title:string;
     @Input() elementId:string;
+    @Input() closeOnBodyClick:string;
     @ViewChild('modalContainer') containerEl:ElementRef;
 
     closeModel(){
-        $(this.containerEl.nativeElement).modal('hide');
+        if (this.closeOnBodyClick.toLowerCase() === 'true') {
+            $(this.containerEl.nativeElement).modal('hide');
+        }
     }
 }

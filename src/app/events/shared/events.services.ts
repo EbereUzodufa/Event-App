@@ -17,12 +17,12 @@ export class EventService {
 
     getEvent(id:number): IEvent{
         const event = EVENTS.find(event=> event.id === id);
-        console.log('the Event', event);
+        // console.log('the Event', event);
         return event;
     }
 
     saveEvent(event){
-        console.log('inital', EVENTS)
+        // console.log('inital', EVENTS)
         event.id = 999;
         event.sessions = [];
         EVENTS.push(event);
