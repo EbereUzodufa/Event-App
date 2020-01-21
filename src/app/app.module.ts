@@ -19,19 +19,21 @@ import {
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 
-import { CollapsibleWellComponent } from "./common/collapsible-well.component";
-
-// import { TOASTR_TOKEN} from "./common/toastr.service";
+import { 
+  CollapsibleWellComponent,
+  // Toastr,
+  ToastrService,
+  JQ_TOKEN
+} from "./common/index";
 
 import { Error404Component } from './errors/404.component';
 import { appRoute } from './routes';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './user/auth.service';
-import { Toastr } from './common/toaster.model';
-import { ToastrService } from './common';
 // import { window } from 'rxjs/operators';
 
-let toastr:Toastr = window['Toastr'];
+// let toastr:Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   imports: [
@@ -64,6 +66,10 @@ let toastr:Toastr = window['Toastr'];
     EventListResolver,
     AuthService,
     ToastrService,
+    {
+        provide: JQ_TOKEN,
+        useValue: jQuery
+      },
     {
       provide: 'canDeactivateCreateEvent', 
       useValue: checkDirtyState
