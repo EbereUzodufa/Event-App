@@ -1,4 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ViewChild, ElementRef } from "@angular/core";
+
+declare var $: any;
 
 @Component({
     selector: 'simple-modal',
@@ -11,4 +13,9 @@ import { Component, Input } from "@angular/core";
 export class SimpleModalComponent{
     @Input() title:string;
     @Input() elementId:string;
+    @ViewChild('modalContainer') containerEl:ElementRef;
+
+    closeModel(){
+        $(this.containerEl.nativeElement).modal('hide');
+    }
 }

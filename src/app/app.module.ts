@@ -36,6 +36,7 @@ import { AuthService } from './user/auth.service';
 
 // let toastr:Toastr = window['toastr'];
 let jQuery = window['$'];
+declare var $: any;
 
 @NgModule({
   imports: [

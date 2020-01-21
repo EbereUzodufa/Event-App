@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { EventService } from "../shared/events.services";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 import { IEvent, ISession } from '../shared';
 
 @Component({
@@ -30,7 +30,12 @@ export class EventDetailsComponent{
 
     }
     ngOnInit(): void {
-        this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+        // By not using as static snapshot, we can navigate from event to events using the same component
+        this.route.params.forEach((params:Params) => {
+            this.event = this.eventService.getEvent(+params['id']);
+            this.addMode = false;
+        });
+        // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
     }
 
     addSection(){
