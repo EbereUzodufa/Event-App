@@ -23,7 +23,9 @@ import {
   CollapsibleWellComponent,
   // Toastr,
   ToastrService,
-  JQ_TOKEN
+  JQ_TOKEN,
+  SimpleModalComponent,
+  ModalTriggerDirective
 } from "./common/index";
 
 import { Error404Component } from './errors/404.component';
@@ -54,7 +56,9 @@ let jQuery = window['$'];
     CreateSessionComponent,
     SessionListComponent, 
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   providers: [
     EventService,

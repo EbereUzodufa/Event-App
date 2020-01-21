@@ -10,6 +10,7 @@ import { EventService, ISession } from '../events';
         .nav.navbar-nav {font-size: 15px;}
         li > a.active {color: #F97824}
         #searchForm {margin-right: 100px;}
+        .modal{display: block !important}
         @media (max-width: 1200px) {#searchForm{display: none}}
         `
     ]
@@ -17,7 +18,7 @@ import { EventService, ISession } from '../events';
 
 export class NavBarComponent{
     searchTerm:string;
-    foundSessions:ISession[] = [];
+    foundSessions:any[] = [];
     constructor(public auth: AuthService, private eventService:EventService){
 
     }

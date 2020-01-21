@@ -34,10 +34,19 @@
           <div class="form-group">
             <input type="text" [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="Search Sessions" required='true'>
           </div>
-          <button class="btn btn-default" type="submit">
+          <!-- Adds a modal-trigger attribute to make modal pop up. we set the attr fn in directive -->
+          <button class="btn btn-default" type="submit" modal-trigger>
             Search
           </button>
         </form>
       </div>
     </div>
 </div>
+
+<!-- Add a leading slash (/) to start from the root for the link  -->
+
+<simple-modal title="Matching Sessions">
+  <div class="list-group">
+  <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">{{session.name}}</a>
+  </div>
+</simple-modal>
