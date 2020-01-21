@@ -4,10 +4,11 @@ import { Component, Input } from "@angular/core";
     selector: 'simple-modal',
     templateUrl: './simpleModel.component.html',
     styles:[`
-        .modal-body{height :250px; overflow-y: scroll;}
+        .modal-body{padding:0; height:500px; overflow-y: auto;}
     `]
 })
 
 export class SimpleModalComponent{
     @Input() title:string;
+    @Input() elementId:string;
 }
