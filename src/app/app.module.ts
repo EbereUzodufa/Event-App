@@ -14,6 +14,7 @@ import {
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
+  UpvoteComponent,
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -57,6 +58,7 @@ declare var $: any;
     CreateSessionComponent,
     SessionListComponent, 
     CollapsibleWellComponent,
+    UpvoteComponent,
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective
