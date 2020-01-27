@@ -26,6 +26,14 @@ export class SessionListComponent implements OnChanges{
             this.visibleSessions = this.sessions.filter(s=>s.level.toLowerCase() === filterBy);
         }
     }
+
+    toggleVote(session){
+
+    }
+
+    userHasVoted(session){
+        
+    }
 }
 
 
