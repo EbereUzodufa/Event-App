@@ -1,6 +1,7 @@
-import { Component, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, Input, ViewChild, ElementRef, Inject } from "@angular/core";
+import { JQ_TOKEN } from './jquery.service';
 
-declare var $: any;
+// declare var $: any;
 
 @Component({
     selector: 'simple-modal',
@@ -16,9 +17,11 @@ export class SimpleModalComponent{
     @Input() closeOnBodyClick:string;
     @ViewChild('modalContainer') containerEl:ElementRef;
 
+    constructor(@Inject(JQ_TOKEN) private $:any){}
+
     closeModel(){
         if (this.closeOnBodyClick.toLowerCase() === 'true') {
-            $(this.containerEl.nativeElement).modal('hide');
+            this.$(this.containerEl.nativeElement).modal('hide');
         }
     }
 }
