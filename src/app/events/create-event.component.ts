@@ -4,7 +4,14 @@ import { EventService } from './shared';
 
 @Component({
     selector: 'create-event',
-    templateUrl: './create-event.component.html'
+    templateUrl: './create-event.component.html',
+    styles: [`
+        em {
+            float: right;
+            color: #E05C65;
+            padding-left: 10px;
+        }
+    `]
 })
 
 export class CreateEventComponent{
