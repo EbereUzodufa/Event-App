@@ -46,7 +46,7 @@
     </div>
     
 
-    <session-list *ngIf="!addMode" [filterBy]="filterBy" [sortBy]="sortBy" [sessions]="event?.sessions"></session-list>
+    <session-list *ngIf="!addMode" [eventId]="event?.id" [filterBy]="filterBy" [sortBy]="sortBy" [sessions]="event?.sessions"></session-list>
     <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-session>
     <!-- $event is the event itself. The event binding (someevent) allows to bind to DOM events and to EventEmitter events. The syntax is exactly the same. https://stackoverflow.com/questions/37944199/what-exactly-event-object-do-in-angular-2 -->
  
