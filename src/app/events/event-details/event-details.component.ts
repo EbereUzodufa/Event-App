@@ -47,7 +47,7 @@ export class EventDetailsComponent{
         session.id = nextId + 1;
         this.event.sessions.push(session);
         console.log('pushed session', session);
-        this.eventService.updateEvent(this.event);
+        this.eventService.saveEvent(this.event).subscribe();
         this.addMode = false;
     }
 

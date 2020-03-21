@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Subject, Observable, of } from "rxjs";
 import { IEvent, ISession } from "./event.model";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError } from 'rxjs/operators';
 
 //Always call injectable. This is for services depending on other services. Calling it is safer just in case.
@@ -17,44 +17,24 @@ export class EventService {
 
     getEvent(id:number): Observable<IEvent>{
         return this.http.get<IEvent>('/api/events/' + id)
-        .pipe(catchError(this.handleError<IEvent>('getEvents')));
+        .pipe(catchError(this.handleError<IEvent>('getEvent')));
     }
 
     saveEvent(event){
-        // console.log('inital', EVENTS)
-        event.id = 999;
-        event.sessions = [];
-        EVENTS.push(event);
-        // console.log('event', event);
-        // console.log('later', EVENTS)
+        //Save and update save the same purpose
+       const options = {
+           headers: new HttpHeaders({
+            'Content-type': 'application-json'
+           })
+        }
+
+        return this.http.post<IEvent>('/api/events', event, options)
+        .pipe(catchError(this.handleError<IEvent>('saveEvent')));
     }
 
-    updateEvent(event){
-      let i = EVENTS.findIndex(x=> x.id = event.id);
-      EVENTS[i] = event;  
-    }
-
-    searchSession(searchTerm:string){
-        var term = searchTerm.toLowerCase();
-        var results:ISession[] = [];
-
-        EVENTS.forEach(event => {
-            var matchedSession = event.sessions.filter(session=>session.name.toLowerCase().indexOf(term) > -1);
-            matchedSession = matchedSession.map((session:any)=>{
-                session.eventId = event.id;
-                return session;
-            });
-            results = results.concat(matchedSession);
-        });
-        //We use an eventemitter whose value is set to true to simulate an async process so we can subscribe to it.
-
-        var emitter = new EventEmitter(true);
-
-        setTimeout(() => {
-            console.log('ree', results);
-            emitter.emit(results);
-        }, 100);
-        return emitter;
+    searchSession(searchTerm:string):Observable<ISession[]>{
+        return this.http.get<ISession[]>('/api/sessions/search?search=' + searchTerm)
+        .pipe(catchError(this.handleError<ISession[]>('searchSession', [])));
     }
 
     private handleError<T> (operation = 'operation', result?:T){
