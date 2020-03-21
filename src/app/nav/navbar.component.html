@@ -35,7 +35,7 @@
             <input type="text" [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="Search Sessions" required='true'>
           </div>
           <!-- Adds a modal-trigger attribute to make modal pop up. we set the attr fn in directive -->
-          <button class="btn btn-default" type="submit" modal-trigger = "searchedSessions" [disabled] = "!searchTerm && !searchTerm.trim()">
+          <button class="btn btn-default" type="submit" modal-trigger = "searchedSessions" [disabled] = "!searchTerm && !(searchTerm && searchTerm.trim())">
             Search
           </button>
         </form>
@@ -47,7 +47,7 @@
 
 <simple-modal closeOnBodyClick = "true" elementId = "searchedSessions" title="Matching Sessions">
   <div class="list-group" *ngIf="foundSessions.length">
-    <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">{{session.name}}</a>
+    <a class="list-group-item" (click)="clearSearch()" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">{{session.name}}</a>
   </div>
   <div *ngIf="!foundSessions.length" style="background-color: #485563; padding: 1em;">
     <p>No Session Found</p>

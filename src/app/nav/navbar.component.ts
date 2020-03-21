@@ -34,4 +34,8 @@ export class NavBarComponent{
             )
         }
     }
+
+    clearSearch(){
+        this.searchTerm = '';
+    }
 }
