@@ -1,24 +1,23 @@
 import { Injectable, EventEmitter } from "@angular/core";
-import { Subject, Observable } from "rxjs";
+import { Subject, Observable, of } from "rxjs";
 import { IEvent, ISession } from "./event.model";
+import { HttpClient } from "@angular/common/http";
+import { catchError } from 'rxjs/operators';
 
 //Always call injectable. This is for services depending on other services. Calling it is safer just in case.
 
 @Injectable()
 export class EventService {
+    constructor(private http: HttpClient){}
+
     getEvents(): Observable <IEvent[]> {
-        let subject = new Subject<IEvent[]>();
-        setTimeout(()=>{
-            subject.next(EVENTS);
-            subject.complete();
-        }, 100);
-        return subject;
+        return this.http.get<IEvent[]>('/api/events')
+        .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
     }
 
-    getEvent(id:number): IEvent{
-        const event = EVENTS.find(event=> event.id === id);
-        // console.log('the Event', event);
-        return event;
+    getEvent(id:number): Observable<IEvent>{
+        return this.http.get<IEvent>('/api/events/' + id)
+        .pipe(catchError(this.handleError<IEvent>('getEvents')));
     }
 
     saveEvent(event){
@@ -28,7 +27,6 @@ export class EventService {
         EVENTS.push(event);
         // console.log('event', event);
         // console.log('later', EVENTS)
-
     }
 
     updateEvent(event){
@@ -53,9 +51,17 @@ export class EventService {
         var emitter = new EventEmitter(true);
 
         setTimeout(() => {
+            console.log('ree', results);
             emitter.emit(results);
         }, 100);
         return emitter;
+    }
+
+    private handleError<T> (operation = 'operation', result?:T){
+        return (error: any): Observable<T> =>{
+            console.error(error);
+            return of(result as T);
+        }
     }
 }
 const EVENTS:IEvent[] = [
