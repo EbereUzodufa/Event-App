@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import {
   EventListComponent,
@@ -9,7 +10,6 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
@@ -17,6 +17,7 @@ import {
   UpvoteComponent,
   VoterService,
   LocationValidator,
+  EventResolver,
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -47,7 +48,8 @@ declare var $: any;
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoute)
+    RouterModule.forRoot(appRoute),
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -72,7 +74,7 @@ declare var $: any;
     //   provide: TOASTR_TOKEN,
     //   useValue: toastr
     // },
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,

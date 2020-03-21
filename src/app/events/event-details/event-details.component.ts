@@ -31,8 +31,8 @@ export class EventDetailsComponent{
     }
     ngOnInit(): void {
         // By not using as static snapshot, we can navigate from event to events using the same component
-        this.route.params.forEach((params:Params) => {
-            this.event = this.eventService.getEvent(+params['id']);
+        this.route.data.forEach((data) => {
+            this.event = data['event'];
             this.addMode = false;
         });
         // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
