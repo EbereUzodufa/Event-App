@@ -26,7 +26,8 @@ export class LoginComponent{
     login(formValues){
         // console.log(formValues);
         this.authService.loginUser(formValues.userName, formValues.password).subscribe(resp=>{
-            if (!resp) {
+            console.log('resp login', resp);
+            if (resp) {
                 this.router.navigate(['events']);
             } else{
                 this.loginInvalid = true;
