@@ -34,6 +34,17 @@ describe('VoterService', ()=>{
             expect(session.voters[0]).toBe('ngozi');
             expect(session.voters).toEqual(['ngozi']); //This is not necessary; I'm just practicing
             //NB---> toBe() versus toEqual(): toEqual() checks equivalence. toBe(), on the other hand, makes sure that they're the exact same object.
+        });
+
+        it('should call http.delete with the right URL', ()=>{
+            let session = {
+                id: 6,
+                voters: ['ngozi', 'amaka']
+            };
+            mockHttp.delete.and.returnValue(of(false));
+            voterService.deleteVoter(3, <ISession>session, "amaka");
+
+            expect(mockHttp.delete).toHaveBeenCalledWith('/api/events/3/sessions/6/voters/amaka');
         })
     })
 })
