@@ -47,4 +47,34 @@ describe('VoterService', ()=>{
             expect(mockHttp.delete).toHaveBeenCalledWith('/api/events/3/sessions/6/voters/amaka');
         })
     })
+
+    //Test for addVoter fn
+    describe('addVoter', ()=>{
+        it('should add the voter from the list of voters', ()=>{
+            let session = {
+                id: 6,
+                voters: ['ngozi', 'amaka']
+            };
+
+            //Here we use 'of' to make an Observable for http return before pipe in the actual service
+            mockHttp.post.and.returnValue(of(false));
+
+            //Uses ISession to cast the value of session and maintain data integrity
+            voterService.addVoter(3, <ISession>session, "joy");
+
+            expect(session.voters.length).toBe(3);
+            expect(session.voters[2]).toBe('joy');
+        });
+
+        it('should call http.post with the right URL', ()=>{
+            let session = {
+                id: 6,
+                voters: ['ngozi', 'amaka']
+            };
+            mockHttp.post.and.returnValue(of(false));
+            voterService.addVoter(3, <ISession>session, "amaka");
+
+            expect(mockHttp.post).toHaveBeenCalledWith('/api/events/3/sessions/6/voters/amaka', {}, jasmine.any(Object)); //jasmine.any is used to say that the parameter at that position must be an object
+        });
+    })
 })
