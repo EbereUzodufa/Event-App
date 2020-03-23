@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   EventListComponent,
@@ -18,19 +18,19 @@ import {
   VoterService,
   LocationValidator,
   EventResolver,
-} from './events/index'
+} from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 
-import { 
+import {
   CollapsibleWellComponent,
   // Toastr,
   ToastrService,
   JQ_TOKEN,
   SimpleModalComponent,
   ModalTriggerDirective
-} from "./common/index";
+} from './common/index';
 
 import { Error404Component } from './errors/404.component';
 import { appRoute } from './routes';
@@ -39,7 +39,7 @@ import { AuthService } from './user/auth.service';
 // import { window } from 'rxjs/operators';
 
 // let toastr:Toastr = window['toastr'];
-let jQuery = window['$'];
+const jQuery = window['$'];
 declare var $: any;
 
 @NgModule({
@@ -58,9 +58,9 @@ declare var $: any;
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component, 
+    Error404Component,
     CreateSessionComponent,
-    SessionListComponent, 
+    SessionListComponent,
     CollapsibleWellComponent,
     DurationPipe,
     UpvoteComponent,
@@ -84,7 +84,7 @@ declare var $: any;
         useValue: jQuery
       },
     {
-      provide: 'canDeactivateCreateEvent', 
+      provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     }
   ],
@@ -92,8 +92,9 @@ declare var $: any;
 })
 export class AppModule { }
 
-export function checkDirtyState(component:CreateEventComponent) {
-  if (component.isDirty)
+export function checkDirtyState(component: CreateEventComponent) {
+  if (component.isDirty) {
     return window.confirm('You have not saved this event, do you really want to cancel?');
+  }
   return true;
 }

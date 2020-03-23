@@ -1,9 +1,9 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'duration'})
 
-export class DurationPipe implements PipeTransform{
-    transform(value:number):string{
+export class DurationPipe implements PipeTransform {
+    transform(value: number): string {
         switch (value) {
             case 1: return 'Half Hour';
             case 2: return '1 Hour';

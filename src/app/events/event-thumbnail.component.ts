@@ -1,10 +1,10 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IEvent } from './shared';
 
 @Component({
     selector: 'event-thumbail',
     templateUrl: './event-thumbnail.component.html',
-    styles:[
+    styles: [
         `
         .am8 { color: #5F9EA0 !important}
         .bold { font-weight: bold}
@@ -15,7 +15,7 @@ import { IEvent } from './shared';
     ]
 })
 
-export class EventThumbnailComponent{
+export class EventThumbnailComponent {
     @Input() event: IEvent;
     // someProperty:any = "soem value";
 
@@ -28,14 +28,14 @@ export class EventThumbnailComponent{
     //     this.eventClick.emit(this.event.name);
     // }
 
-    getStartTimeClass(){
-        //This function get's the approprate class based on Start time class
-        if(this.event && this.event.time === '8:00 am'){
+    getStartTimeClass() {
+        // This function get's the approprate class based on Start time class
+        if (this.event && this.event.time === '8:00 am') {
             return ['am8', 'bold'];
-        } else if(this.event && this.event.time === '9:00 am'){
+        } else if (this.event && this.event.time === '9:00 am') {
             return ['am9', 'bold'];
         }
-            
+
         return [];
     }
 }

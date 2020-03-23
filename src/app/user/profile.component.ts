@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from '../common';
@@ -8,7 +8,7 @@ import { ToastrService } from '../common';
 
 @Component({
   templateUrl: './profile.component.html',
-  styleUrls:['./profile.component.css']
+  styleUrls: ['./profile.component.css']
 })
 
 export class ProfileComponent implements OnInit {
@@ -16,37 +16,37 @@ export class ProfileComponent implements OnInit {
   firstName: FormControl;
   lastName: FormControl;
 
-  constructor(private authService:AuthService, private router:Router, private toastr: ToastrService){
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
     this.lastName = new FormControl(this.authService.currentUser.lastName, [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName
-    })
+    });
   }
 
-  saveProfile(formValues){
+  saveProfile(formValues) {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
       // this.router.navigate(['events']);
       this.toastr.success('Profile Saved');
     }
-   
+
   }
 
-  validateFirstName(){
+  validateFirstName() {
     return this.firstName.valid || this.firstName.untouched;
   }
 
-  validateLastName(){
+  validateLastName() {
     return this.lastName.valid || this.lastName.untouched;
   }
 
-  cancel(){
+  cancel() {
     this.router.navigate(['events']);
   }
 }

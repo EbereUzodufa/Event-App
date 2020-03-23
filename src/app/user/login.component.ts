@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './login.component.html',
-    styles:[`
+    styles: [`
         em{
             float: right;
             color: #E05C65;
@@ -13,29 +13,29 @@ import { Router } from '@angular/router';
     `]
 })
 
-export class LoginComponent{
+export class LoginComponent {
     userName;
     password;
     mouseoverLogin;
-    loginInvalid:boolean = false;
-    
-    constructor(private authService:AuthService, private router: Router){
+    loginInvalid = false;
+
+    constructor(private authService: AuthService, private router: Router) {
 
     }
 
-    login(formValues){
+    login(formValues) {
         // console.log(formValues);
-        this.authService.loginUser(formValues.userName, formValues.password).subscribe(resp=>{
+        this.authService.loginUser(formValues.userName, formValues.password).subscribe(resp => {
             console.log('resp login', resp);
             if (resp) {
                 this.router.navigate(['events']);
-            } else{
+            } else {
                 this.loginInvalid = true;
             }
         });
     }
 
-    cancel(){
+    cancel() {
         this.router.navigate(['events']);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ISession, restrictedWords } from '../shared';
@@ -9,21 +9,21 @@ import { ISession, restrictedWords } from '../shared';
     styleUrls: ['./create-session.component.css']
 })
 
-export class CreateSessionComponent implements OnInit{
+export class CreateSessionComponent implements OnInit {
     @Output() saveNewSession = new EventEmitter();
     @Output() cancelAddSession = new EventEmitter();
-    sessionForm:FormGroup;
+    sessionForm: FormGroup;
     sessionName: FormControl;
     presenter: FormControl;
     duration: FormControl;
     level: FormControl;
     abstract: FormControl;
 
-    constructor(private router: Router){
+    constructor(private router: Router) {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.sessionName  = new FormControl('', Validators.required);
         this.presenter  = new FormControl('', Validators.required);
         this.duration  = new FormControl('', Validators.required);
@@ -36,12 +36,12 @@ export class CreateSessionComponent implements OnInit{
             duration: this.duration,
             level: this.level,
             abstract: this.abstract,
-        })
+        });
     }
 
-    saveSession(formValue){
+    saveSession(formValue) {
         // console.log(formValue);
-        let session:ISession = {
+        const session: ISession = {
             id: undefined,
             name: formValue.sessionName,
             duration: +formValue.duration,
@@ -49,12 +49,12 @@ export class CreateSessionComponent implements OnInit{
             presenter: formValue.presenter,
             abstract: formValue.abstract,
             voters: []
-        }
+        };
         console.log(session);
         this.saveNewSession.emit(session);
     }
 
-    cancel(){
+    cancel() {
         // this.router.navigate(['/events']);
         this.cancelAddSession.emit();
     }
